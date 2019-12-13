@@ -26,11 +26,7 @@
   (match path
     [(cons "assignments" url)
      (define page-result (assignments:load session url post))
-     ;; FIXME: this cond should be unnecessary, result should just be list of xexprs
-     (cond [(response? page-result) page-result]
-           [else (plain-page
-                  "Assignments"
-                  page-result)])]
+     page-result]
     [(list "send-test-email")
      (cond [(send-email (ct-session-uid session)
                         "Test Email sent by Captain Teach"
